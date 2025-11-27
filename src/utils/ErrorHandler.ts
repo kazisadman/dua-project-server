@@ -5,9 +5,9 @@ class ErrorHandler extends Error {
 
   constructor(
     statusCode: number,
-    message: "Something went wrong",
+    message = "Something went wrong",
     success: boolean,
-    errors: any[]
+    errors = []
   ) {
     super(message);
     this.statusCode = statusCode;

@@ -1,0 +1,60 @@
+-- INSERT INTO categories (id, category_title, icon)
+-- VALUES (
+--         1,
+--         'Daily Prayers',
+--         'https://i.ibb.co.com/r2PDy49X/asset-4.png'
+--     ),
+--     (
+--         2,
+--         'Morning & Evening',
+--         'https://i.ibb.co.com/N6MRmJTz/asset-5.png'
+--     );
+
+
+
+-- INSERT INTO subcategories (id, title, category_id)
+-- VALUES (
+--         11,
+--         'The most important thing to ask Allah for',
+--         1
+--     ),
+--     (12, 'Ask for paradise & protection from fire', 1);
+-- SELECT * FROM subcategories;
+
+
+-- INSERT INTO duas (
+--         id,
+--         subCategory_id,
+--         category_id,
+--         title,
+--         description,
+--         arabic,
+--         transliteration,
+--         translation,
+--         hadith,
+--         ref_no
+--     )
+-- VALUES (
+--         101,
+--         11,
+--         1,
+--         'The most important thing to ask Allah for',
+--         'Ask Allah for Paradise and protection from the Fire; the ultimate success in this world and the Hereafter.',
+--         'اللّهُمَّ اجعلنا من أهل الجنة',
+--         'Allahumma aj‘alna min ahlil-jannah',
+--         'O Allah, make us among the people of Paradise.',
+--         'Bukhari',
+--         344
+--     ),
+--     (
+--         102,
+--         11,
+--         1,
+--         'Seeking steadfastness on the religion',
+--         'Ask Allah to keep us firm on the path of Islam and grant perseverance in worship.',
+--         'اللّهُمَّ ثَبِّتنا على الدين',
+--         'Allahumma thabbitna ''ala ad-deen',
+--         'O Allah, keep us steadfast on Your religion.',
+--         'Muslim',
+--         123
+--     );

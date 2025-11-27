@@ -1,4 +1,14 @@
-import  sqlite3  from "sqlite3";
+import Database from "better-sqlite3";
 
-const db = sqlite3.verbose()
+let db: Database.Database;
 
+try {
+  db = new Database("./src/app.db");
+
+  console.log("Database is connected");
+} catch (error) {
+  console.log("Database connection failed!", error);
+  process.exit(1);
+}
+
+export default db;
