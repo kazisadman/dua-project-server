@@ -1,17 +1,24 @@
-import express from "express";
-import db from "./db";
+import express, { Response } from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import "dotenv/config";
+
+import categoryRoutes from "./routes/category.routes";
 
 const app = express();
 
-app.get("/test-db", (req, res) => {
-  try {
-    const row = db.prepare("SELECT sqlite_version() AS version").get();
-    res.json({ message: "Database connected" });
-  } catch (error) {
-    res.status(500).json({ message: "Database query failed", error });
-  }
+const port = process.env.PORT || 3000;
+
+app.use(cookieParser());
+app.use(cors());
+app.use(express.json());
+
+app.get("/api", (_, res: Response) => {
+  res.send("hello world");
 });
 
-app.listen(3000, () => {
-  console.log("server is running");
+app.use("/api/v1", categoryRoutes);
+
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
 });
