@@ -26,16 +26,13 @@
 --     FOREIGN KEY(subcategory_id) REFERENCES subcategories(id),
 --     FOREIGN KEY(category_id) REFERENCES categories(id)
 -- );
--- SELECT c.id,
---     c.category_title,
---     c.icon,
---     COUNT(DISTINCT s.id) AS total_subcategories,
---     COUNT(DISTINCT d.id) AS total_duas,
---     JSON_GROUP_ARRAY(DISTINCT s.id) AS subcategories_id,
---     JSON_GROUP_ARRAY(DISTINCT d.id) AS duas_id
--- FROM categories AS c
---     LEFT JOIN subcategories AS s ON c.id = s.category_id
---     LEFT JOIN duas AS d ON d.category_id = c.id
--- GROUP BY c.id,
---     c.category_title,
---     c.icon;
+SELECT 
+    s.id,
+     s.title,
+     s.category_id,
+     JSON_GROUP_ARRAY(d.id) AS duas_id
+FROM categories AS c
+    LEFT JOIN subcategories AS s ON c.id = s.category_id
+    LEFT JOIN duas AS d ON d.subcategory_id = s.id
+WHERE c.id = 5
+GROUP BY s.id,s.title;
