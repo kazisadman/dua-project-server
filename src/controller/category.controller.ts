@@ -79,7 +79,6 @@ const getSearchedCategories = (req: Request, res: Response) => {
     subcategories_id: JSON.parse(item.subcategories_id),
     duas_id: JSON.parse(item.duas_id),
   }));
-  console.log(parsed);
 
   res.status(200).json(parsed);
 };
