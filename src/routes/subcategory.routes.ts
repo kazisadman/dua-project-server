@@ -7,8 +7,8 @@ import {
 
 const router = Router();
 
-router.get("/subcategories", getAllSubcategories);
-router.get("/subcategories/:id", getSubcategoryById);
-router.get("/subcategories/:id/duas", getDuasBySubcategoryId);
+router.get("/", getAllSubcategories);
+router.get("/:id", getSubcategoryById);
+router.get("/:id/duas", getDuasBySubcategoryId);
 
 export default router;

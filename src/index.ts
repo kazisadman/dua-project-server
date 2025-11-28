@@ -5,6 +5,8 @@ import "dotenv/config";
 
 import categoryRoutes from "./routes/category.routes";
 import subcategoyRoutes from "./routes/subcategory.routes";
+import duaRoutes from "./routes/dua.routes";
+import { notfound } from "./middlewares/notFound";
 
 const app = express();
 
@@ -18,8 +20,11 @@ app.get("/api", (_, res: Response) => {
   res.send("hello world");
 });
 
-app.use("/api/v1", categoryRoutes);
-app.use("/api/v1", subcategoyRoutes);
+app.use(notfound);
+
+app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1/subcategories", subcategoyRoutes);
+app.use("/api/v1/duas", duaRoutes);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

@@ -26,9 +26,6 @@
 --     FOREIGN KEY(subcategory_id) REFERENCES subcategories(id),
 --     FOREIGN KEY(category_id) REFERENCES categories(id)
 -- );
-SELECT
-    d.*
-FROM categories AS c
-    LEFT JOIN subcategories AS s ON c.id = s.category_id
-    LEFT JOIN duas AS d ON d.subcategory_id = s.id
-WHERE s.id = 11;
+
+SELECT * FROM duas
+WHERE id = 105;

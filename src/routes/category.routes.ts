@@ -7,8 +7,8 @@ import {
 
 const router = express.Router();
 
-router.get("/categories", getAllCategories);
-router.get("/categories/:id", getCategoryById);
-router.get("/categories/:id/subcategories", getSubcategoriesByCategoryId);
+router.get("/", getAllCategories);
+router.get("/:id", getCategoryById);
+router.get("/:id/subcategories", getSubcategoriesByCategoryId);
 
 export default router;
