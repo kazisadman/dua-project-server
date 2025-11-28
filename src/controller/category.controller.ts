@@ -3,6 +3,7 @@ import asyncHandler from "../utils/asyncHandler";
 import {
   getAllCategoriesFromDb,
   getCategoryFromDbById,
+  getSearchedCategoriesFromDb,
   getSubcategoriesByCategoryIdFromDb,
 } from "../service/category.service";
 import ErrorHandler from "../utils/ErrorHandler";
@@ -64,4 +65,28 @@ const getSubcategoriesByCategoryId = (req: Request, res: Response) => {
   res.status(200).json(parsed);
 };
 
-export { getAllCategories, getCategoryById, getSubcategoriesByCategoryId };
+const getSearchedCategories = (req: Request, res: Response) => {
+  const searchTerm = req.query.query || "";
+
+  const data = getSearchedCategoriesFromDb(searchTerm.toString());
+
+  if (!data) {
+    throw new ErrorHandler(404, "Categories Data not found", false);
+  }
+
+  const parsed: CategoryDTO[] = (data as Category[]).map((item) => ({
+    ...item,
+    subcategories_id: JSON.parse(item.subcategories_id),
+    duas_id: JSON.parse(item.duas_id),
+  }));
+  console.log(parsed);
+
+  res.status(200).json(parsed);
+};
+
+export {
+  getAllCategories,
+  getCategoryById,
+  getSubcategoriesByCategoryId,
+  getSearchedCategories,
+};

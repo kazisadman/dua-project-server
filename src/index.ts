@@ -13,18 +13,22 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
 app.use(express.json());
 
 app.get("/api", (_, res: Response) => {
   res.send("hello world");
 });
 
-app.use(notfound);
-
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/subcategories", subcategoyRoutes);
 app.use("/api/v1/duas", duaRoutes);
+
+app.use(notfound);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

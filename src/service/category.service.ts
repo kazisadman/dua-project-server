@@ -68,8 +68,32 @@ GROUP BY s.id,s.title;
   return result as Subcategory[];
 };
 
+const getSearchedCategoriesFromDb = (query: string) => {
+  const sql = `
+  SELECT c.id,
+    c.category_title,
+    c.icon,
+    COUNT(DISTINCT s.id) AS total_subcategories,
+    COUNT(DISTINCT d.id) AS total_duas,
+    JSON_GROUP_ARRAY(DISTINCT s.id) AS subcategories_id,
+    JSON_GROUP_ARRAY(DISTINCT d.id) AS duas_id
+FROM categories AS c
+    LEFT JOIN subcategories AS s ON c.id = s.category_id
+    LEFT JOIN duas AS d ON d.category_id = c.id
+WHERE c.category_title LIKE ?
+GROUP BY c.id,
+    c.category_title,
+    c.icon;
+  `;
+  const prepare = db.prepare(sql);
+  const result = prepare.all(`%${query}%`);
+
+  return result;
+};
+
 export {
   getAllCategoriesFromDb,
   getCategoryFromDbById,
   getSubcategoriesByCategoryIdFromDb,
+  getSearchedCategoriesFromDb,
 };

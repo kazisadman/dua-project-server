@@ -26,6 +26,3 @@
 --     FOREIGN KEY(subcategory_id) REFERENCES subcategories(id),
 --     FOREIGN KEY(category_id) REFERENCES categories(id)
 -- );
-
-SELECT * FROM duas
-WHERE id = 105;

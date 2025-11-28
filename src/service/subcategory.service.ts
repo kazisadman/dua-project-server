@@ -23,7 +23,7 @@ GROUP BY s.id,s.title;
   return result as Subcategory[];
 };
 
-const getDuasBySubCategoryIdFromDb = (id:number) => {
+const getDuasBySubCategoryIdFromDb = (id: number) => {
   const sql = `
   SELECT
     d.*
@@ -62,6 +62,8 @@ GROUP BY s.id,s.title;
   return result as Subcategory;
 };
 
-
-
-export { getAllSubcategoriesFromDb, getSubcategoryByIdFromDb,getDuasBySubCategoryIdFromDb };
+export {
+  getAllSubcategoriesFromDb,
+  getSubcategoryByIdFromDb,
+  getDuasBySubCategoryIdFromDb,
+};
