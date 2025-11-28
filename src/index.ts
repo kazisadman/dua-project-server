@@ -4,6 +4,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import categoryRoutes from "./routes/category.routes";
+import subcategoyRoutes from "./routes/subcategory.routes";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get("/api", (_, res: Response) => {
 });
 
 app.use("/api/v1", categoryRoutes);
+app.use("/api/v1", subcategoyRoutes);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

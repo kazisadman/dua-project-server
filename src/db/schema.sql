@@ -26,13 +26,9 @@
 --     FOREIGN KEY(subcategory_id) REFERENCES subcategories(id),
 --     FOREIGN KEY(category_id) REFERENCES categories(id)
 -- );
-SELECT 
-    s.id,
-     s.title,
-     s.category_id,
-     JSON_GROUP_ARRAY(d.id) AS duas_id
+SELECT
+    d.*
 FROM categories AS c
     LEFT JOIN subcategories AS s ON c.id = s.category_id
     LEFT JOIN duas AS d ON d.subcategory_id = s.id
-WHERE c.id = 5
-GROUP BY s.id,s.title;
+WHERE s.id = 11;
